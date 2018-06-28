@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+   
+</head>
+<body>
+    <form class="form" method="get" action="http://www.google.com/search"
+          onsubmit="new site_search('http://localhost:28341/index.html', q.value); return false;">
+        <input type="hidden" name="sitesearch" value="http://localhost:28341/index.html" />
+        <input type="text" name="q" id="query" value="Search" />
+    </form>
+
+
+    <script type="text/javascript"
+            src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=AIzaSyAgpTnLydXqray7frH-4r5Z-IyxIQoTQ-A">
+    </script>
+    <script type="text/javascript" src="[PATH]/ajax_search.js"></script>
+</body>
+</html>

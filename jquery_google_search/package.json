@@ -1,0 +1,29 @@
+{
+  "author": "Sascha Depold <sascha@depold.com> (htp://depold.com)",
+  "name": "jquery.google-search",
+  "description": "Execute google searches within your client-side javascript.",
+  "version": "0.1.4",
+  "homepage": "https://github.com/sdepold/jquery.google-search",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sdepold/jquery.google-search.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jquery.skeleton": "~0.6.0",
+    "buster": "~0.6.2"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "npm run minify && npm run buster-test",
+    "buster-test": "node_modules/.bin/buster-test",
+    "buster-capture": "(npm run buster-server &) && sleep 2 && npm run buster-capture-browser",
+    "minify": "java -jar dist/compiler.jar src/*.js --js_output_file=dist/jquery.`pwd|sed -e 's/.*jquery\\.//'`.min.js",
+    "buster-capture-browser": "type -P open &>/dev/null && open 'http://localhost:1111/capture' || firefox 'http://localhost:1111/capture'",
+    "buster-server": "node_modules/.bin/buster-server"
+  },
+  "main": "src/jquery.google-search.js"
+}

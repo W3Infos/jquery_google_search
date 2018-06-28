@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>jquery.google-search</title>
+    <script type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+    <!-- <script type="text/javascript" src="src/jquery.google-search.js"></script> -->
+	
+      <!--<script src="src/jquery.google-search.js"></script>-->
+      <script src="dist/jquery.google-search.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+        //var search = new $.GoogleSearch().search('delivery', {}, function(data) {
+        //  console.log(data)
+        //  search.cleanUp()
+        //})
+
+            new $.GoogleSearch().search("suggetttoin", {}, function (data) {
+                console.log(data);
+            });
+
+      })
+    </script>
+  </head>
+  <body>
+      <h1>Google search</h1>
+      <script type="text/javascript">
+    google.load('search', '1', { language: 'en' });
+    google.setOnLoadCallback(function () {
+        var customSearchControl = new google.search.CustomSearchControl('AIzaSyAgpTnLydXqray7frH-4r5Z-IyxIQoTQ-A');
+        var linkTarget = "frame";
+        //customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+        //customSearchControl.draw('cse');
+
+        // Use "mysite_" as a unique ID to override the default rendering.
+        google.search.Csedr.addOverride("mysite_AIzaSyAgpTnLydXqray7frH-4r5Z-IyxIQoTQ-A");
+        customSearchControl.setLinkTarget(linkTarget)
+        // Draw the Custom Search Control in the div named "CSE"
+        customSearchControl.draw('cse');
+
+        $('.gsc-search-button').click(function () {
+            console.log('click');
+        })
+
+        // Execute an initial search
+        //customSearchControl.execute("ajax");
+
+
+    }, true);
+      </script>
+
+      <script>
+    (function () {
+        var cx = '123:456'; // Insert your own Custom Search engine ID here
+        var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+    })();
+      </script>
+
+      <!-- Place this tag where you want both of the search box and the search results to render -->
+      <gcse:search></gcse:search>
+
+  </body>
+</html>

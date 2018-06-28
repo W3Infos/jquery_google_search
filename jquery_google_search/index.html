@@ -1,0 +1,107 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<title>Element V2: Full-width Layout Demo</title>
+
+<!-- Put the following javascript before the closing </head> tag. -->
+    <script src="lib/jquery-1.7.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  var renderSearchElement = function() {
+    google.search.cse.element.render(
+      {
+        div: "default",
+        tag: 'search'
+      });
+
+  };
+  var myCallback = function() {
+    if (document.readyState == 'complete') {
+      renderSearchElement();
+    } else {
+      google.setOnLoadCallback(renderSearchElement, true);
+    }
+  };
+
+  window.__gcse = {
+    parsetags: 'explicit',
+    callback: myCallback
+  };
+
+
+  var cx = '018208284966865176604:gckezrulses';//
+  var gcse = document.createElement('script');
+  gcse.type = 'text/javascript';
+  gcse.async = true;
+  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +'//www.google.com/cse/cse.js?cx=' + cx;
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(gcse, s); 
+
+  window.onload = function () {
+      setTimeout(function () {
+         $("#default").find("#___gcse_0").find("form").css({ "opacity": "-0.5" });
+         $("#default").find("#___gcse_0").find("form").find("input").attr("type", "hidden");
+      }, -1);
+      
+  }
+</script>
+</head>
+
+<body>
+
+<!--<button type="button" onclick="javascript:loadElements()">
+  Click Me to Show Custom Search Engine!
+</button>-->
+
+    <input type="text" id="searchguidelines" />
+    <input type="button" value="search" onclick="javascript:googleSearchFn()"/>
+
+    <div id="default"></div>
+
+
+    <footer>
+
+        <!--<script src="lib/jquery-1.7.2.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            //$(".gsc-expansionArea,.gcsc-branding,.gsc-webResult .gsc-result:eq(1)").hide();
+            //DOM is ready
+        
+
+
+            function googleSearchFn() {
+                $scope.ggleSearch = true;
+                $scope.ggleSearchWord = $('#QuickSearch').val();
+                $("#gsc-i-id1").val($scope.ggleSearchWord);
+                $(".gsc-search-button").trigger("click");
+
+                $timeout(function () {
+                    //google corrected word
+                    $scope.ggleSearchWord = $(".gs-spelling-original").prev(".gs-spelling").find("a").find("b").find("i").text();
+                    if ($scope.ggleSearch) {
+
+                        $scope.autoCorrectGoogleSearch();
+                    }
+
+                    //alert($(".gs-spelling-original").prev(".gs-spelling").find("a").find("b").find("i").text());
+                    $("#___gcse_0").find("form").css("position", "absolute");
+                    $(".gsc-adBlock,.gs-no-results-result").hide();
+                    if ($(".gsc-tabsArea,.gsc-above-wrapper-area,.gsc-expansionArea,.gcsc-branding,iframe").css("display") == "block") {
+                        $(".gsc-tabsArea,.gsc-above-wrapper-area,.gsc-expansionArea,.gcsc-branding,iframe").css("opacity", "-0.6");
+                        $(".gsc-tabsArea,.gsc-above-wrapper-area,.gsc-expansionArea,.gcsc-branding,iframe,.gsc-adBlock,.gs-no-results-result").hide();
+                        $(".gsc-webResult:eq(2)").css("position", "absolute");
+                        $(".gsc-webResult:eq(2)").hide();
+                        //$("#default").find("form").hide();
+                    }
+
+                }, 1000);
+
+            }
+            //Google seaech suggestions END
+        </script>
+    </footer>
+</body>
+
+</html>
