@@ -8,7 +8,7 @@ Creating google custom search engine:
 		-Description
 		-Language
 		-Define your search engine:
-			Sites to search: www.Staging.apollomanagecare.com/*
+			Sites to search: www.test.com/*
 
 	-Check Standard Edition 
 	-Check terms and conditions
